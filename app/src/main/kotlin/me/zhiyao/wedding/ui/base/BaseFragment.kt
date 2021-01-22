@@ -1,5 +1,6 @@
 package me.zhiyao.wedding.ui.base
 
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 
 /**
@@ -7,4 +8,4 @@ import androidx.fragment.app.Fragment
  * @author WangZhiYao
  * @date 2021/1/22
  */
-abstract class BaseFragment : Fragment()
+abstract class BaseFragment(@LayoutRes private val resId: Int) : Fragment(resId)
