@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="me.zhiyao.wedding.ui.main.dress.DressFragment"
+        android:label="@string/nav_menu_dress"
+        tools:layout="@layout/fragment_dress" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="me.zhiyao.wedding.ui.main.customer.CustomerFragment"
+        android:label="@string/nav_menu_customer"
+        tools:layout="@layout/fragment_customer" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="me.zhiyao.wedding.ui.main.reserve.ReserveFragment"
+        android:label="@string/nav_menu_reserve"
+        tools:layout="@layout/fragment_reserve" />
+</navigation>
