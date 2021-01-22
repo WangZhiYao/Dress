@@ -8,4 +8,7 @@
     <string name="nav_menu_dress">礼服</string>
     <string name="nav_menu_customer">客户</string>
     <string name="nav_menu_reserve">预定</string>
+
+    <string name="dress_rent_hint">租金：</string>
+    <string name="dress_origin_price_hint">原价：</string>
 </resources>
