@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_menu_sort"
+        android:title="@string/dress_menu_sort"
+        app:showAsAction="always">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/action_sort_create_time_asc"
+                    android:title="@string/dress_menu_sort_create_time_asc" />
+                <item
+                    android:id="@+id/action_sort_create_time_desc"
+                    android:title="@string/dress_menu_sort_create_time_desc"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/action_sort_origin_price_asc"
+                    android:title="@string/dress_menu_sort_origin_price_asc" />
+                <item
+                    android:id="@+id/action_sort_origin_price_desc"
+                    android:title="@string/dress_menu_sort_origin_price_desc" />
+                <item
+                    android:id="@+id/action_sort_rent_asc"
+                    android:title="@string/dress_menu_sort_rent_asc" />
+                <item
+                    android:id="@+id/action_sort_rent_desc"
+                    android:title="@string/dress_menu_sort_rent_desc" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

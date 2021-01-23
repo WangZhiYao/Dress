@@ -11,4 +11,12 @@
 
     <string name="dress_rent_hint">租金：</string>
     <string name="dress_origin_price_hint">原价：</string>
+    <string name="dress_menu_sort">排序</string>
+    <string name="dress_menu_sort_create_time_asc">创建时间升序</string>
+    <string name="dress_menu_sort_create_time_desc">创建时间降序</string>
+    <string name="dress_menu_sort_origin_price_asc">价格升序</string>
+    <string name="dress_menu_sort_origin_price_desc">价格降序</string>
+    <string name="dress_menu_sort_rent_asc">租金升序</string>
+    <string name="dress_menu_sort_rent_desc">租金降序</string>
+
 </resources>
