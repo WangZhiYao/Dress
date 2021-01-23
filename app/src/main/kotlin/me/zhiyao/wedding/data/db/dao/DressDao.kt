@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import me.zhiyao.wedding.constant.OrderBy
-import me.zhiyao.wedding.data.db.entity.DressWithFilterOption
+import me.zhiyao.wedding.data.db.entity.DressWithImagesAndFilterOption
 import me.zhiyao.wedding.data.db.model.Dress
 
 /**
@@ -29,5 +29,5 @@ interface DressDao : IDao<Dress> {
     fun queryAllDressOrderBy(
         field: String,
         @OrderBy orderBy: Int
-    ): PagingSource<Int, DressWithFilterOption>
+    ): PagingSource<Int, DressWithImagesAndFilterOption>
 }

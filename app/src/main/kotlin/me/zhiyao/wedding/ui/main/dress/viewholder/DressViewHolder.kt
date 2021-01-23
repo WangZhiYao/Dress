@@ -18,6 +18,9 @@ class DressViewHolder(
 
     fun bind(dressWithFilter: DressWithFilter) {
         val dress = dressWithFilter.dress
+
+        // TODO: 2021/1/23 set image of dress
+
         binding.tvDressName.text =
             if (dress.name.isNullOrBlank()) "No.${dress.id}" else dress.name
 

@@ -1,7 +1,8 @@
 package me.zhiyao.wedding.data.model
 
-import me.zhiyao.wedding.data.db.entity.FilterWithFilterOption
+import me.zhiyao.wedding.data.db.entity.FilterWithFilterOptions
 import me.zhiyao.wedding.data.db.model.Dress
+import me.zhiyao.wedding.data.db.model.DressImage
 
 /**
  *
@@ -10,5 +11,6 @@ import me.zhiyao.wedding.data.db.model.Dress
  */
 data class DressWithFilter(
     val dress: Dress,
-    val filterList: List<FilterWithFilterOption>
+    val imageList: List<DressImage>,
+    val filterList: List<FilterWithFilterOptions>
 )

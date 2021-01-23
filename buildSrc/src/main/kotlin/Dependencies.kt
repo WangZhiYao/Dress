@@ -12,6 +12,7 @@ object Versions {
     const val hiltCompilerVersion = "1.0.0-alpha02"
     const val roomVersion = "2.3.0-alpha04"
     const val pagingVersion = "3.0.0-alpha12"
+    const val glideVersion = "4.11.0"
     const val materialDialogVersion = "3.3.0"
 }
 
@@ -50,7 +51,8 @@ object Dependencies {
     const val hiltLifecycleViewModel =
         "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltCompilerVersion}"
     const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltCompilerVersion}"
-    const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:${Versions.hiltAndroidVersion}"
+    const val hiltAndroidTesting =
+        "com.google.dagger:hilt-android-testing:${Versions.hiltAndroidVersion}"
 
     const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
@@ -58,6 +60,9 @@ object Dependencies {
     const val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"
 
     const val pagingRuntimeKtx = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
+
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 
     const val materialDialogCore =
         "com.afollestad.material-dialogs:core:${Versions.materialDialogVersion}"

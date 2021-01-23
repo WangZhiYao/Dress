@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import kotlinx.coroutines.flow.Flow
-import me.zhiyao.wedding.data.db.entity.FilterWithFilterOption
+import me.zhiyao.wedding.data.db.entity.FilterWithFilterOptions
 import me.zhiyao.wedding.data.db.model.Filter
 
 /**
@@ -20,5 +20,5 @@ interface FilterDao : IDao<Filter> {
 
     @Query("SELECT * FROM filter")
     @Transaction
-    fun queryAllFilterWithFilterOption(): Flow<List<FilterWithFilterOption>>
+    fun queryAllFilterWithFilterOption(): Flow<List<FilterWithFilterOptions>>
 }

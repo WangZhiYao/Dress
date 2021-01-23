@@ -88,6 +88,9 @@ dependencies {
 
     implementation(Dependencies.pagingRuntimeKtx)
 
+    implementation(Dependencies.glide)
+    kapt(Dependencies.glideCompiler)
+
     implementation(Dependencies.materialDialogCore)
     implementation(Dependencies.materialDialogInput)
     implementation(Dependencies.materialDialogDateTime)

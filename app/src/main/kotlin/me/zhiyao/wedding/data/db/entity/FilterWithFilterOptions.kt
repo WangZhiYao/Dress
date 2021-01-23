@@ -10,7 +10,7 @@ import me.zhiyao.wedding.data.db.model.FilterOption
  * @author WangZhiYao
  * @date 2021/1/19
  */
-data class FilterWithFilterOption(
+data class FilterWithFilterOptions(
     @Embedded
     val filter: Filter,
     @Relation(

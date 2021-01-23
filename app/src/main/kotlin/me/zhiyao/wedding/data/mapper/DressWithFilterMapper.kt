@@ -1,7 +1,7 @@
 package me.zhiyao.wedding.data.mapper
 
-import me.zhiyao.wedding.data.db.entity.DressWithFilterOption
-import me.zhiyao.wedding.data.db.entity.FilterWithFilterOption
+import me.zhiyao.wedding.data.db.entity.DressWithImagesAndFilterOption
+import me.zhiyao.wedding.data.db.entity.FilterWithFilterOptions
 import me.zhiyao.wedding.data.db.model.Filter
 import me.zhiyao.wedding.data.db.model.FilterOption
 import me.zhiyao.wedding.data.model.DressWithFilter
@@ -11,10 +11,11 @@ import me.zhiyao.wedding.data.model.DressWithFilter
  * @author
  * @date 2021/1/21
  */
-class DressWithFilterMapper : IMapper<DressWithFilterOption, DressWithFilter> {
+class DressWithFilterMapper : IMapper<DressWithImagesAndFilterOption, DressWithFilter> {
 
-    override fun apply(input: DressWithFilterOption): DressWithFilter {
-        val dress = input.dress
+    override fun apply(input: DressWithImagesAndFilterOption): DressWithFilter {
+        val dress = input.dress.dress
+        val imageList = input.dress.imageList
         val filterOptionWithFilterList = input.filterOptionWithFilterList
 
         val filterMap = HashMap<Filter, ArrayList<FilterOption>>()
@@ -28,14 +29,14 @@ class DressWithFilterMapper : IMapper<DressWithFilterOption, DressWithFilter> {
             filterOptionList.add(it.filterOption)
         }
 
-        val filterWithFilterOptionList = ArrayList<FilterWithFilterOption>()
+        val filterWithFilterOptionList = ArrayList<FilterWithFilterOptions>()
 
         if (filterMap.isNotEmpty()) {
             filterMap.entries.forEach {
-                filterWithFilterOptionList.add(FilterWithFilterOption(it.key, it.value))
+                filterWithFilterOptionList.add(FilterWithFilterOptions(it.key, it.value))
             }
         }
 
-        return DressWithFilter(dress, filterWithFilterOptionList)
+        return DressWithFilter(dress, imageList, filterWithFilterOptionList)
     }
 }

@@ -2,6 +2,7 @@ package me.zhiyao.wedding.data.db.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 /**
@@ -9,7 +10,17 @@ import androidx.room.PrimaryKey
  * @author WangZhiYao
  * @date 2021/1/21
  */
-@Entity(tableName = "image")
+@Entity(
+    tableName = "image",
+    foreignKeys = [
+        ForeignKey(
+            entity = Dress::class,
+            parentColumns = ["dress_id"],
+            childColumns = ["dress_id"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 data class DressImage(
 
     /**
