@@ -5,16 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:id="@+id/nav_dress"
             android:title="@string/nav_menu_dress" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/nav_customer"
             android:title="@string/nav_menu_customer" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/nav_reserve"
             android:title="@string/nav_menu_reserve" />
     </group>
 </menu>

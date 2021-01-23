@@ -1,7 +1,6 @@
 package me.zhiyao.wedding.ui.main
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -42,16 +41,11 @@ class MainActivity : BaseActivity() {
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_dress, R.id.nav_customer, R.id.nav_reserve
             ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
