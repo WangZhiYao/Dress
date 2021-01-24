@@ -9,7 +9,7 @@ import me.zhiyao.wedding.data.db.model.DressImage
  * @author WangZhiYao
  * @date 2021/1/21
  */
-data class DressWithFilter(
+data class DressWithImageAndFilter(
     val dress: Dress,
     val imageList: List<DressImage>,
     val filterList: List<FilterWithFilterOptions>

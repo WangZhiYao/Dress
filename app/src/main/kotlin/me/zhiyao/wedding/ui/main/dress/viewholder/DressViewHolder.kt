@@ -2,8 +2,9 @@ package me.zhiyao.wedding.ui.main.dress.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import me.zhiyao.wedding.data.model.DressWithFilter
+import me.zhiyao.wedding.data.model.DressWithImageAndFilter
 import me.zhiyao.wedding.databinding.ItemDressBinding
+import me.zhiyao.wedding.ui.main.dress.listener.OnDressClickListener
 import java.text.NumberFormat
 import java.util.*
 
@@ -16,8 +17,11 @@ class DressViewHolder(
     private val binding: ItemDressBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(dressWithFilter: DressWithFilter) {
-        val dress = dressWithFilter.dress
+    fun bind(
+        dressWithImageAndFilter: DressWithImageAndFilter,
+        onDressClickListener: OnDressClickListener
+    ) {
+        val dress = dressWithImageAndFilter.dress
 
         // TODO: 2021/1/23 set image of dress
 
@@ -34,5 +38,13 @@ class DressViewHolder(
         val nf = NumberFormat.getCurrencyInstance(Locale.CHINA)
         binding.tvDressOriginPrice.text = nf.format(dress.originPrice / 100)
         binding.tvDressRent.text = nf.format(dress.rent / 100)
+
+        binding.cvDress.setOnClickListener {
+            onDressClickListener.onDressClicked(dressWithImageAndFilter)
+        }
+
+        binding.btnDressReserve.setOnClickListener {
+            onDressClickListener.onReserveClicked(dressWithImageAndFilter)
+        }
     }
 }

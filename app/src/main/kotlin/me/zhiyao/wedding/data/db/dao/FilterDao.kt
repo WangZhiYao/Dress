@@ -20,5 +20,5 @@ interface FilterDao : IDao<Filter> {
 
     @Query("SELECT * FROM filter")
     @Transaction
-    fun queryAllFilterWithFilterOption(): Flow<List<FilterWithFilterOptions>>
+    fun queryAllFilterWithFilterOptionList(): Flow<List<FilterWithFilterOptions>>
 }

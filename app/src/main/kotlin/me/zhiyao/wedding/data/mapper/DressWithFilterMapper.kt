@@ -4,16 +4,16 @@ import me.zhiyao.wedding.data.db.entity.DressWithImagesAndFilterOption
 import me.zhiyao.wedding.data.db.entity.FilterWithFilterOptions
 import me.zhiyao.wedding.data.db.model.Filter
 import me.zhiyao.wedding.data.db.model.FilterOption
-import me.zhiyao.wedding.data.model.DressWithFilter
+import me.zhiyao.wedding.data.model.DressWithImageAndFilter
 
 /**
  *
  * @author
  * @date 2021/1/21
  */
-class DressWithFilterMapper : IMapper<DressWithImagesAndFilterOption, DressWithFilter> {
+class DressWithFilterMapper : IMapper<DressWithImagesAndFilterOption, DressWithImageAndFilter> {
 
-    override fun apply(input: DressWithImagesAndFilterOption): DressWithFilter {
+    override fun apply(input: DressWithImagesAndFilterOption): DressWithImageAndFilter {
         val dress = input.dress.dress
         val imageList = input.dress.imageList
         val filterOptionWithFilterList = input.filterOptionWithFilterList
@@ -37,6 +37,6 @@ class DressWithFilterMapper : IMapper<DressWithImagesAndFilterOption, DressWithF
             }
         }
 
-        return DressWithFilter(dress, imageList, filterWithFilterOptionList)
+        return DressWithImageAndFilter(dress, imageList, filterWithFilterOptionList)
     }
 }

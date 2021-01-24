@@ -8,19 +8,34 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import me.zhiyao.wedding.constant.OrderBy
-import me.zhiyao.wedding.data.model.DressWithFilter
+import me.zhiyao.wedding.data.model.DressWithImageAndFilter
 import me.zhiyao.wedding.data.repo.DressRepository
+import me.zhiyao.wedding.data.repo.FilterRepository
 
 
 class DressViewModel @ViewModelInject constructor(
-    private val dressRepository: DressRepository
+    private val dressRepository: DressRepository,
+    private val filterRepository: FilterRepository
 ) : ViewModel() {
 
-    fun getAllDressOrderBy(
+    fun getAllDress(
         field: String,
         @OrderBy orderBy: Int
-    ): LiveData<PagingData<DressWithFilter>> =
-        dressRepository.getAllDressOrderBy(field, orderBy)
+    ): LiveData<PagingData<DressWithImageAndFilter>> =
+        dressRepository.getAllDress(field, orderBy)
             .cachedIn(viewModelScope)
+            .asLiveData()
+
+    fun getAllDress(
+        filterOptionIdList: List<Long>,
+        field: String,
+        @OrderBy orderBy: Int
+    ): LiveData<PagingData<DressWithImageAndFilter>> =
+        dressRepository.getAllDress(filterOptionIdList, field, orderBy)
+            .cachedIn(viewModelScope)
+            .asLiveData()
+
+    val allFilterWithFilterOptionList =
+        filterRepository.queryAllFilterWithFilterOptionList()
             .asLiveData()
 }

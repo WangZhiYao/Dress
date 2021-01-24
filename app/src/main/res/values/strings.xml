@@ -18,5 +18,11 @@
     <string name="dress_menu_sort_origin_price_desc">价格降序</string>
     <string name="dress_menu_sort_rent_asc">租金升序</string>
     <string name="dress_menu_sort_rent_desc">租金降序</string>
+    <string name="dress_reserve">预定</string>
+    <string name="dress_filter">筛选</string>
+    <string name="dress_filter_apply">应用</string>
+    <string name="dress_filter_clear">清除所有</string>
+
+    <string name="filter_empty">暂无筛选条件</string>
 
 </resources>

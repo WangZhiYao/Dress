@@ -7,8 +7,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import me.zhiyao.wedding.R
 import me.zhiyao.wedding.databinding.ActivityMainBinding
@@ -31,12 +29,6 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
         setSupportActionBar(binding.appBarMain.toolbar)
-
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
 
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(

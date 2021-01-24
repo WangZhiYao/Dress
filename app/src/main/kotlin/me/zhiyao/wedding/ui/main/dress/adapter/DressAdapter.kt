@@ -1,11 +1,12 @@
 package me.zhiyao.wedding.ui.main.dress.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import me.zhiyao.wedding.data.model.DressWithFilter
+import me.zhiyao.wedding.data.model.DressWithImageAndFilter
 import me.zhiyao.wedding.databinding.ItemDressBinding
+import me.zhiyao.wedding.ext.viewBinding
+import me.zhiyao.wedding.ui.main.dress.listener.OnDressClickListener
 import me.zhiyao.wedding.ui.main.dress.viewholder.DressViewHolder
 
 /**
@@ -13,33 +14,37 @@ import me.zhiyao.wedding.ui.main.dress.viewholder.DressViewHolder
  * @author WangZhiYao
  * @date 2021/1/20
  */
-class DressAdapter :
-    PagingDataAdapter<DressWithFilter, DressViewHolder>(DressComparator) {
+class DressAdapter(private val onDressClickListener: OnDressClickListener) :
+    PagingDataAdapter<DressWithImageAndFilter, DressViewHolder>(DressComparator) {
 
-    object DressComparator : DiffUtil.ItemCallback<DressWithFilter>() {
+    object DressComparator : DiffUtil.ItemCallback<DressWithImageAndFilter>() {
         override fun areItemsTheSame(
-            oldItem: DressWithFilter,
-            newItem: DressWithFilter
+            oldItem: DressWithImageAndFilter,
+            newItem: DressWithImageAndFilter
         ) =
             oldItem.dress.id == newItem.dress.id
 
         override fun areContentsTheSame(
-            oldItem: DressWithFilter,
-            newItem: DressWithFilter
+            oldItem: DressWithImageAndFilter,
+            newItem: DressWithImageAndFilter
         ) =
             oldItem.dress.id == newItem.dress.id
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        DressViewHolder(
-            ItemDressBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        DressViewHolder(parent.viewBinding(ItemDressBinding::inflate))
 
     override fun onBindViewHolder(holder: DressViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        getItem(position)?.let {
+            holder.bind(it, object : OnDressClickListener {
+                override fun onDressClicked(dress: DressWithImageAndFilter) {
+                    onDressClickListener.onDressClicked(dress)
+                }
+
+                override fun onReserveClicked(dress: DressWithImageAndFilter) {
+                    onDressClickListener.onReserveClicked(dress)
+                }
+            })
+        }
     }
 }

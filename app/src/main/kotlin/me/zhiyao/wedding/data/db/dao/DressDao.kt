@@ -26,7 +26,25 @@ interface DressDao : IDao<Dress> {
                 "CASE WHEN :field = 'rent' AND :orderBy = 2 THEN rent END DESC"
     )
     @Transaction
-    fun queryAllDressOrderBy(
+    fun queryAllDress(
+        field: String,
+        @OrderBy orderBy: Int
+    ): PagingSource<Int, DressWithImagesAndFilterOption>
+
+    @Query(
+        "SELECT * FROM dress WHERE dress_id IN " +
+                "(SELECT dress_id from dress_filter_option_relation WHERE filter_option_id IN (:filterOptionIdList)) " +
+                "ORDER BY " +
+                "CASE WHEN :field = 'createTime' AND :orderBy = 1 THEN create_time END ASC, " +
+                "CASE WHEN :field = 'createTime' AND :orderBy = 2 THEN create_time END DESC, " +
+                "CASE WHEN :field = 'originPrice' AND :orderBy = 1 THEN origin_price END ASC, " +
+                "CASE WHEN :field = 'originPrice' AND :orderBy = 2 THEN origin_price END DESC, " +
+                "CASE WHEN :field = 'rent' AND :orderBy = 1 THEN rent END ASC, " +
+                "CASE WHEN :field = 'rent' AND :orderBy = 2 THEN rent END DESC"
+    )
+    @Transaction
+    fun queryAllDress(
+        filterOptionIdList: List<Long>,
         field: String,
         @OrderBy orderBy: Int
     ): PagingSource<Int, DressWithImagesAndFilterOption>

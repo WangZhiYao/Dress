@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import me.zhiyao.wedding.data.db.dao.*
 import me.zhiyao.wedding.data.mapper.DressWithFilterMapper
+import me.zhiyao.wedding.data.mapper.FilterWithFilterOptionsMapper
 import me.zhiyao.wedding.data.repo.CustomerRepository
 import me.zhiyao.wedding.data.repo.DressRepository
 import me.zhiyao.wedding.data.repo.FilterRepository
@@ -42,6 +43,6 @@ object RepositoryModule {
         filterDao: FilterDao,
         filterOptionDao: FilterOptionDao
     ): FilterRepository =
-        FilterRepository(filterDao, filterOptionDao)
+        FilterRepository(filterDao, filterOptionDao, FilterWithFilterOptionsMapper())
 
 }
