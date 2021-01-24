@@ -10,18 +10,19 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.zhiyao.wedding.R
 import me.zhiyao.wedding.databinding.ActivityMainBinding
+import me.zhiyao.wedding.ext.viewBinding
 import me.zhiyao.wedding.ui.base.BaseActivity
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding by viewBinding(ActivityMainBinding::inflate)
+
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initView()
