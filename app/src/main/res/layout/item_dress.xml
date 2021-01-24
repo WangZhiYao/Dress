@@ -35,6 +35,20 @@
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
+                android:id="@+id/tv_dress_image_count"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape_background_dress_image_count_mask"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="16dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_dress_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="+6" />
+
+            <TextView
                 android:id="@+id/tv_dress_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -32,7 +32,12 @@ data class DressImage(
     /**
      * 图片路径
      */
-    val path: String
+    val path: String,
+
+    /**
+     * 是否为封面
+     */
+    var cover: Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "image_id")
