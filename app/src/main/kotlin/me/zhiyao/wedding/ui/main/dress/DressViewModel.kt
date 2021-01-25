@@ -19,19 +19,17 @@ class DressViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     fun getAllDress(
-        field: String,
         @OrderBy orderBy: Int
     ): LiveData<PagingData<DressItem>> =
-        dressRepository.getAllDress(field, orderBy)
+        dressRepository.getAllDress(orderBy)
             .cachedIn(viewModelScope)
             .asLiveData()
 
     fun getAllDress(
         filterOptionIdList: List<Long>,
-        field: String,
         @OrderBy orderBy: Int
     ): LiveData<PagingData<DressItem>> =
-        dressRepository.getAllDress(filterOptionIdList, field, orderBy)
+        dressRepository.getAllDress(filterOptionIdList, orderBy)
             .cachedIn(viewModelScope)
             .asLiveData()
 

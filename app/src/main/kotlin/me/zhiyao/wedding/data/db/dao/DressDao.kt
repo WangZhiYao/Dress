@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import kotlinx.coroutines.flow.Flow
 import me.zhiyao.wedding.constant.OrderBy
 import me.zhiyao.wedding.data.db.entity.DressWithImagesAndFilterOption
 import me.zhiyao.wedding.data.db.model.Dress
@@ -17,35 +18,37 @@ import me.zhiyao.wedding.data.db.model.Dress
 interface DressDao : IDao<Dress> {
 
     @Query(
-        "SELECT * FROM dress ORDER BY " +
-                "CASE WHEN :field = 'createTime' AND :orderBy = 1 THEN create_time END ASC, " +
-                "CASE WHEN :field = 'createTime' AND :orderBy = 2 THEN create_time END DESC, " +
-                "CASE WHEN :field = 'originPrice' AND :orderBy = 1 THEN origin_price END ASC, " +
-                "CASE WHEN :field = 'originPrice' AND :orderBy = 2 THEN origin_price END DESC, " +
-                "CASE WHEN :field = 'rent' AND :orderBy = 1 THEN rent END ASC, " +
-                "CASE WHEN :field = 'rent' AND :orderBy = 2 THEN rent END DESC"
+        "SELECT * FROM dress"
     )
     @Transaction
-    fun queryAllDress(
-        field: String,
-        @OrderBy orderBy: Int
-    ): PagingSource<Int, DressWithImagesAndFilterOption>
+    fun queryAllDress(): Flow<List<Dress>>
+
+    @Query(
+        "SELECT * FROM dress ORDER BY " +
+                "CASE WHEN :orderBy = 1 THEN create_time END ASC, " +
+                "CASE WHEN :orderBy = 2 THEN create_time END DESC, " +
+                "CASE WHEN :orderBy = 3 THEN origin_price END ASC, " +
+                "CASE WHEN :orderBy = 4 THEN origin_price END DESC, " +
+                "CASE WHEN :orderBy = 5 THEN rent END ASC, " +
+                "CASE WHEN :orderBy = 6 THEN rent END DESC"
+    )
+    @Transaction
+    fun queryAllDress(@OrderBy orderBy: Int): PagingSource<Int, DressWithImagesAndFilterOption>
 
     @Query(
         "SELECT * FROM dress WHERE dress_id IN " +
                 "(SELECT dress_id from dress_filter_option_relation WHERE filter_option_id IN (:filterOptionIdList)) " +
                 "ORDER BY " +
-                "CASE WHEN :field = 'createTime' AND :orderBy = 1 THEN create_time END ASC, " +
-                "CASE WHEN :field = 'createTime' AND :orderBy = 2 THEN create_time END DESC, " +
-                "CASE WHEN :field = 'originPrice' AND :orderBy = 1 THEN origin_price END ASC, " +
-                "CASE WHEN :field = 'originPrice' AND :orderBy = 2 THEN origin_price END DESC, " +
-                "CASE WHEN :field = 'rent' AND :orderBy = 1 THEN rent END ASC, " +
-                "CASE WHEN :field = 'rent' AND :orderBy = 2 THEN rent END DESC"
+                "CASE WHEN :orderBy = 1 THEN create_time END ASC, " +
+                "CASE WHEN :orderBy = 2 THEN create_time END DESC, " +
+                "CASE WHEN :orderBy = 3 THEN origin_price END ASC, " +
+                "CASE WHEN :orderBy = 4 THEN origin_price END DESC, " +
+                "CASE WHEN :orderBy = 5 THEN rent END ASC, " +
+                "CASE WHEN :orderBy = 6 THEN rent END DESC"
     )
     @Transaction
     fun queryAllDress(
         filterOptionIdList: List<Long>,
-        field: String,
         @OrderBy orderBy: Int
     ): PagingSource<Int, DressWithImagesAndFilterOption>
 }

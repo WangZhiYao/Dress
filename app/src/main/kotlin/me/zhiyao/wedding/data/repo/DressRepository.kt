@@ -26,17 +26,17 @@ class DressRepository(
         enablePlaceholders = false
     )
 
-    fun getAllDress(field: String, @OrderBy orderBy: Int) = Pager(pagingConfig) {
-        dressDao.queryAllDress(field, orderBy)
+    fun getAllDress(@OrderBy orderBy: Int) = Pager(pagingConfig) {
+        dressDao.queryAllDress(orderBy)
     }.flow.map { pagingData ->
         pagingData.map { dressWithFilterOption ->
             dressWithFilterMapper.apply(dressWithFilterOption)
         }
     }
 
-    fun getAllDress(filterOptionIdList: List<Long>, field: String, @OrderBy orderBy: Int) =
+    fun getAllDress(filterOptionIdList: List<Long>, @OrderBy orderBy: Int) =
         Pager(pagingConfig) {
-            dressDao.queryAllDress(filterOptionIdList, field, orderBy)
+            dressDao.queryAllDress(filterOptionIdList, orderBy)
         }.flow.map { pagingData ->
             pagingData.map { dressWithFilterOption ->
                 dressWithFilterMapper.apply(dressWithFilterOption)

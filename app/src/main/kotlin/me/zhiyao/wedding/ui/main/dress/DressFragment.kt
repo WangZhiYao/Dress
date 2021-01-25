@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +17,6 @@ import com.afollestad.materialdialogs.list.customListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import me.zhiyao.wedding.R
 import me.zhiyao.wedding.constant.OrderBy
-import me.zhiyao.wedding.data.db.model.Dress
 import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.databinding.FragmentDressBinding
 import me.zhiyao.wedding.ui.base.BaseFragment
@@ -47,10 +47,8 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
             }
         }
 
-    private var currentSortField: String = Dress::createTime.name
-
     @OrderBy
-    private var currentSortOrder = OrderBy.DESC
+    private var currentOrderBy = OrderBy.CREATE_TIME_DESC
 
     private lateinit var filterOptionAdapter: FilterOptionAdapter
 
@@ -86,13 +84,12 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     private fun getAllDressOrderBy() {
         if (currentSelectedFilterOptionList.isNullOrEmpty()) {
-            viewModel.getAllDress(currentSortField, currentSortOrder)
+            viewModel.getAllDress(currentOrderBy)
                 .observe(viewLifecycleOwner, onDressChangeObserver)
         } else {
             viewModel.getAllDress(
                 currentSelectedFilterOptionList,
-                currentSortField,
-                currentSortOrder
+                currentOrderBy
             )
                 .observe(viewLifecycleOwner, onDressChangeObserver)
         }
@@ -119,28 +116,42 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main_dress, menu)
+        when (currentOrderBy) {
+            OrderBy.CREATE_TIME_ASC -> menu[0].subMenu
+                .findItem(R.id.action_sort_create_time_asc).isChecked = true
+            OrderBy.CREATE_TIME_DESC -> menu[0].subMenu
+                .findItem(R.id.action_sort_create_time_desc).isChecked = true
+            OrderBy.ORIGIN_PRICE_ASC -> menu[0].subMenu
+                .findItem(R.id.action_sort_origin_price_asc).isChecked = true
+            OrderBy.ORIGIN_PRICE_DESC -> menu[0].subMenu
+                .findItem(R.id.action_sort_origin_price_desc).isChecked = true
+            OrderBy.RENT_ASC -> menu[0].subMenu
+                .findItem(R.id.action_sort_rent_asc).isChecked = true
+            OrderBy.RENT_DESC -> menu[0].subMenu
+                .findItem(R.id.action_sort_rent_desc).isChecked = true
+        }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_sort_create_time_asc -> return changeCurrentSort(
-                item, Dress::createTime.name, OrderBy.ASC
+                item, OrderBy.CREATE_TIME_ASC
             )
             R.id.action_sort_create_time_desc -> return changeCurrentSort(
-                item, Dress::createTime.name, OrderBy.DESC
+                item, OrderBy.CREATE_TIME_DESC
             )
             R.id.action_sort_origin_price_asc -> return changeCurrentSort(
-                item, Dress::originPrice.name, OrderBy.ASC
+                item, OrderBy.ORIGIN_PRICE_ASC
             )
             R.id.action_sort_origin_price_desc -> return changeCurrentSort(
-                item, Dress::originPrice.name, OrderBy.DESC
+                item, OrderBy.ORIGIN_PRICE_DESC
             )
             R.id.action_sort_rent_asc -> return changeCurrentSort(
-                item, Dress::rent.name, OrderBy.ASC
+                item, OrderBy.RENT_ASC
             )
             R.id.action_sort_rent_desc -> return changeCurrentSort(
-                item, Dress::rent.name, OrderBy.DESC
+                item, OrderBy.RENT_DESC
             )
         }
         return false
@@ -148,12 +159,10 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     private fun changeCurrentSort(
         item: MenuItem,
-        newSortField: String,
         @OrderBy newSortOrder: Int
     ): Boolean {
         item.isChecked = true
-        currentSortField = newSortField
-        currentSortOrder = newSortOrder
+        currentOrderBy = newSortOrder
         getAllDressOrderBy()
         return true
     }
