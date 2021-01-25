@@ -1,6 +1,6 @@
 package me.zhiyao.wedding.ui.main.dress.listener
 
-import me.zhiyao.wedding.data.model.DressWithImageAndFilter
+import me.zhiyao.wedding.data.model.DressItem
 
 /**
  *
@@ -9,7 +9,7 @@ import me.zhiyao.wedding.data.model.DressWithImageAndFilter
  */
 interface OnDressClickListener {
 
-    fun onDressClicked(dress: DressWithImageAndFilter)
+    fun onDressClicked(dress: DressItem)
 
-    fun onReserveClicked(dress: DressWithImageAndFilter)
+    fun onReserveClicked(dress: DressItem)
 }

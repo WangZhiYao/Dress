@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import me.zhiyao.wedding.constant.OrderBy
-import me.zhiyao.wedding.data.model.DressWithImageAndFilter
+import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.data.repo.DressRepository
 import me.zhiyao.wedding.data.repo.FilterRepository
 
@@ -21,7 +21,7 @@ class DressViewModel @ViewModelInject constructor(
     fun getAllDress(
         field: String,
         @OrderBy orderBy: Int
-    ): LiveData<PagingData<DressWithImageAndFilter>> =
+    ): LiveData<PagingData<DressItem>> =
         dressRepository.getAllDress(field, orderBy)
             .cachedIn(viewModelScope)
             .asLiveData()
@@ -30,7 +30,7 @@ class DressViewModel @ViewModelInject constructor(
         filterOptionIdList: List<Long>,
         field: String,
         @OrderBy orderBy: Int
-    ): LiveData<PagingData<DressWithImageAndFilter>> =
+    ): LiveData<PagingData<DressItem>> =
         dressRepository.getAllDress(filterOptionIdList, field, orderBy)
             .cachedIn(viewModelScope)
             .asLiveData()

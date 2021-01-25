@@ -3,7 +3,7 @@ package me.zhiyao.wedding.ui.main.dress.adapter
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import me.zhiyao.wedding.data.model.DressWithImageAndFilter
+import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.databinding.ItemDressBinding
 import me.zhiyao.wedding.ext.viewBinding
 import me.zhiyao.wedding.ui.main.dress.listener.OnDressClickListener
@@ -15,18 +15,18 @@ import me.zhiyao.wedding.ui.main.dress.viewholder.DressViewHolder
  * @date 2021/1/20
  */
 class DressAdapter(private val onDressClickListener: OnDressClickListener) :
-    PagingDataAdapter<DressWithImageAndFilter, DressViewHolder>(DressComparator) {
+    PagingDataAdapter<DressItem, DressViewHolder>(DressComparator) {
 
-    object DressComparator : DiffUtil.ItemCallback<DressWithImageAndFilter>() {
+    object DressComparator : DiffUtil.ItemCallback<DressItem>() {
         override fun areItemsTheSame(
-            oldItem: DressWithImageAndFilter,
-            newItem: DressWithImageAndFilter
+            oldItem: DressItem,
+            newItem: DressItem
         ) =
             oldItem.dress.id == newItem.dress.id
 
         override fun areContentsTheSame(
-            oldItem: DressWithImageAndFilter,
-            newItem: DressWithImageAndFilter
+            oldItem: DressItem,
+            newItem: DressItem
         ) =
             oldItem.dress.id == newItem.dress.id
     }
@@ -37,11 +37,11 @@ class DressAdapter(private val onDressClickListener: OnDressClickListener) :
     override fun onBindViewHolder(holder: DressViewHolder, position: Int) {
         getItem(position)?.let {
             holder.bind(it, object : OnDressClickListener {
-                override fun onDressClicked(dress: DressWithImageAndFilter) {
+                override fun onDressClicked(dress: DressItem) {
                     onDressClickListener.onDressClicked(dress)
                 }
 
-                override fun onReserveClicked(dress: DressWithImageAndFilter) {
+                override fun onReserveClicked(dress: DressItem) {
                     onDressClickListener.onReserveClicked(dress)
                 }
             })

@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.zhiyao.wedding.R
 import me.zhiyao.wedding.constant.OrderBy
 import me.zhiyao.wedding.data.db.model.Dress
-import me.zhiyao.wedding.data.model.DressWithImageAndFilter
+import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.databinding.FragmentDressBinding
 import me.zhiyao.wedding.ui.base.BaseFragment
 import me.zhiyao.wedding.ui.main.dress.adapter.DressAdapter
@@ -35,10 +35,10 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     private lateinit var dressAdapter: DressAdapter
 
-    private val onDressChangeObserver: Observer<PagingData<DressWithImageAndFilter>> =
-        Observer { dressWithFilter ->
+    private val onDressChangeObserver: Observer<PagingData<DressItem>> =
+        Observer { dressItemList ->
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                dressAdapter.submitData(dressWithFilter)
+                dressAdapter.submitData(dressItemList)
                 // FIXME: 2021/1/23 It's not a good idea to use postDelayed
                 //  scrolling to the top after data changes
                 binding.rvDress.postDelayed({
@@ -109,11 +109,11 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
         })
     }
 
-    override fun onDressClicked(dress: DressWithImageAndFilter) {
+    override fun onDressClicked(dress: DressItem) {
 
     }
 
-    override fun onReserveClicked(dress: DressWithImageAndFilter) {
+    override fun onReserveClicked(dress: DressItem) {
 
     }
 

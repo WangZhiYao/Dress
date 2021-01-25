@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import me.zhiyao.wedding.GlideApp
 import me.zhiyao.wedding.R
-import me.zhiyao.wedding.data.model.DressWithImageAndFilter
+import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.databinding.ItemDressBinding
 import me.zhiyao.wedding.ui.main.dress.listener.OnDressClickListener
 import java.text.NumberFormat
@@ -21,11 +21,11 @@ class DressViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        dressWithImageAndFilter: DressWithImageAndFilter,
+        dressItem: DressItem,
         onDressClickListener: OnDressClickListener
     ) {
 
-        val imageList = dressWithImageAndFilter.imageList
+        val imageList = dressItem.imageList
         if (imageList.isEmpty()) {
             binding.ivDressImage.visibility = View.GONE
             binding.tvDressImageCount.visibility = View.GONE
@@ -47,7 +47,7 @@ class DressViewHolder(
             }
         }
 
-        val dress = dressWithImageAndFilter.dress
+        val dress = dressItem.dress
         binding.tvDressName.text =
             if (dress.name.isNullOrBlank()) "No.${dress.id}" else dress.name
 
@@ -63,11 +63,11 @@ class DressViewHolder(
         binding.tvDressRent.text = nf.format(dress.rent / 100)
 
         binding.cvDress.setOnClickListener {
-            onDressClickListener.onDressClicked(dressWithImageAndFilter)
+            onDressClickListener.onDressClicked(dressItem)
         }
 
         binding.btnDressReserve.setOnClickListener {
-            onDressClickListener.onReserveClicked(dressWithImageAndFilter)
+            onDressClickListener.onReserveClicked(dressItem)
         }
     }
 }
