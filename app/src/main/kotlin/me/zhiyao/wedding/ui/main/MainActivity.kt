@@ -28,13 +28,15 @@ class MainActivity : BaseActivity() {
         initView()
     }
 
+    override fun canGoBack() = false
+
     private fun initView() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_dress, R.id.nav_customer, R.id.nav_reserve
+                R.id.nav_dress, R.id.nav_customer, R.id.nav_reserve, R.id.nav_setting
             ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

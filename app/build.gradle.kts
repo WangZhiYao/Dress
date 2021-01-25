@@ -86,6 +86,8 @@ dependencies {
     kapt(Dependencies.roomCompiler)
     implementation(Dependencies.roomKtx)
 
+    implementation(Dependencies.dataStore)
+
     implementation(Dependencies.pagingRuntimeKtx)
 
     implementation(Dependencies.glide)

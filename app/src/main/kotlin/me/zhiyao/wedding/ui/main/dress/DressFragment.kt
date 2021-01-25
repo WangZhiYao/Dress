@@ -1,10 +1,7 @@
 package me.zhiyao.wedding.ui.main.dress
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -32,6 +29,8 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     private var _binding: FragmentDressBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var sortMenu: SubMenu
 
     private lateinit var dressAdapter: DressAdapter
 
@@ -79,7 +78,17 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
     }
 
     private fun initData() {
-        getAllDressOrderBy()
+        initSort()
+    }
+
+    private fun initSort() {
+        viewModel.sortOrder.observe(viewLifecycleOwner, {
+            currentOrderBy = it
+            getAllDressOrderBy()
+            if (this::sortMenu.isInitialized) {
+                setCheckedItem(sortMenu)
+            }
+        })
     }
 
     private fun getAllDressOrderBy() {
@@ -116,21 +125,25 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main_dress, menu)
+        sortMenu = menu[0].subMenu
+        setCheckedItem(sortMenu)
+    }
+
+    private fun setCheckedItem(sortMenu: SubMenu) {
         when (currentOrderBy) {
-            OrderBy.CREATE_TIME_ASC -> menu[0].subMenu
+            OrderBy.CREATE_TIME_ASC -> sortMenu
                 .findItem(R.id.action_sort_create_time_asc).isChecked = true
-            OrderBy.CREATE_TIME_DESC -> menu[0].subMenu
+            OrderBy.CREATE_TIME_DESC -> sortMenu
                 .findItem(R.id.action_sort_create_time_desc).isChecked = true
-            OrderBy.ORIGIN_PRICE_ASC -> menu[0].subMenu
+            OrderBy.ORIGIN_PRICE_ASC -> sortMenu
                 .findItem(R.id.action_sort_origin_price_asc).isChecked = true
-            OrderBy.ORIGIN_PRICE_DESC -> menu[0].subMenu
+            OrderBy.ORIGIN_PRICE_DESC -> sortMenu
                 .findItem(R.id.action_sort_origin_price_desc).isChecked = true
-            OrderBy.RENT_ASC -> menu[0].subMenu
+            OrderBy.RENT_ASC -> sortMenu
                 .findItem(R.id.action_sort_rent_asc).isChecked = true
-            OrderBy.RENT_DESC -> menu[0].subMenu
+            OrderBy.RENT_DESC -> sortMenu
                 .findItem(R.id.action_sort_rent_desc).isChecked = true
         }
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -173,7 +186,9 @@ class DressFragment : BaseFragment(R.layout.fragment_dress),
             customListAdapter(filterOptionAdapter)
             positiveButton(R.string.dress_filter_apply) {
                 currentSelectedFilterOptionList.clear()
-                currentSelectedFilterOptionList.addAll(filterOptionAdapter.selectedFilterOptionIdList)
+                currentSelectedFilterOptionList.addAll(
+                    filterOptionAdapter.selectedFilterOptionIdList
+                )
                 getAllDressOrderBy()
             }
             negativeButton(R.string.dress_filter_clear) {

@@ -14,4 +14,17 @@
             android:id="@+id/nav_reserve"
             android:title="@string/nav_menu_reserve" />
     </group>
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_more"
+            android:title="@string/nav_menu_more">
+            <menu>
+                <item
+                    android:id="@+id/nav_setting"
+                    android:title="@string/nav_menu_setting" />
+            </menu>
+
+        </item>
+    </group>
 </menu>

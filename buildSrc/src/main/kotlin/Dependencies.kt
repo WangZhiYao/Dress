@@ -11,6 +11,7 @@ object Versions {
     const val hiltAndroidVersion = "2.28-alpha"
     const val hiltCompilerVersion = "1.0.0-alpha02"
     const val roomVersion = "2.3.0-alpha04"
+    const val dataStoreVersion = "1.0.0-alpha06"
     const val pagingVersion = "3.0.0-alpha12"
     const val glideVersion = "4.11.0"
     const val materialDialogVersion = "3.3.0"
@@ -58,6 +59,8 @@ object Dependencies {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"
+
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.dataStoreVersion}"
 
     const val pagingRuntimeKtx = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
 

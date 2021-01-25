@@ -22,4 +22,11 @@
         android:name="me.zhiyao.wedding.ui.main.reserve.ReserveFragment"
         android:label="@string/nav_menu_reserve"
         tools:layout="@layout/fragment_reserve" />
+
+    <activity
+        android:id="@+id/nav_setting"
+        android:name="me.zhiyao.wedding.ui.setting.SettingActivity"
+        android:label="@string/nav_menu_setting"
+        tools:layout="@layout/activity_setting" />
+
 </navigation>

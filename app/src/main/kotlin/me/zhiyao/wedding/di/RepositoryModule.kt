@@ -1,5 +1,7 @@
 package me.zhiyao.wedding.di
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,10 +9,7 @@ import dagger.hilt.android.components.ApplicationComponent
 import me.zhiyao.wedding.data.db.dao.*
 import me.zhiyao.wedding.data.mapper.DressWithFilterMapper
 import me.zhiyao.wedding.data.mapper.FilterWithFilterOptionsMapper
-import me.zhiyao.wedding.data.repo.CustomerRepository
-import me.zhiyao.wedding.data.repo.DressRepository
-import me.zhiyao.wedding.data.repo.FilterRepository
-import me.zhiyao.wedding.data.repo.ReserveRepository
+import me.zhiyao.wedding.data.repo.*
 import javax.inject.Singleton
 
 /**
@@ -21,6 +20,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object RepositoryModule {
+
+    @Provides
+    @Singleton
+    fun provideSettingRepository(dataStore: DataStore<Preferences>): SettingRepository =
+        SettingRepository(dataStore)
 
     @Provides
     @Singleton

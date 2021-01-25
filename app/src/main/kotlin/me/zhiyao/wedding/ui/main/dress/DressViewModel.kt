@@ -11,11 +11,13 @@ import me.zhiyao.wedding.constant.OrderBy
 import me.zhiyao.wedding.data.model.DressItem
 import me.zhiyao.wedding.data.repo.DressRepository
 import me.zhiyao.wedding.data.repo.FilterRepository
+import me.zhiyao.wedding.data.repo.SettingRepository
 
 
 class DressViewModel @ViewModelInject constructor(
     private val dressRepository: DressRepository,
-    private val filterRepository: FilterRepository
+    private val filterRepository: FilterRepository,
+    private val settingRepository: SettingRepository
 ) : ViewModel() {
 
     fun getAllDress(
@@ -36,4 +38,6 @@ class DressViewModel @ViewModelInject constructor(
     val allFilterWithFilterOptionList =
         filterRepository.queryAllFilterWithFilterOptionList()
             .asLiveData()
+
+    val sortOrder = settingRepository.sortOrder.asLiveData()
 }
