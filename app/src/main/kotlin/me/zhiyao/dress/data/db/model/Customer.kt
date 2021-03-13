@@ -25,7 +25,8 @@ data class Customer(
     /**
      * 性别
      */
-    val gender: Gender?,
+    @Gender
+    val gender: Int?,
 
     /**
      * 结婚日期

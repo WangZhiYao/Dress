@@ -72,7 +72,9 @@ dependencies {
     implementation(Dependencies.viewModel)
     implementation(Dependencies.commonJava8)
 
+    implementation(Dependencies.navigationUi)
     implementation(Dependencies.navigationUiKtx)
+    implementation(Dependencies.navigationFragment)
     implementation(Dependencies.navigationFragmentKtx)
 
     implementation(Dependencies.hiltAndroid)

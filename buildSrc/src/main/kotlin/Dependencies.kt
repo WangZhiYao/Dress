@@ -11,7 +11,7 @@ object Versions {
     const val hiltAndroidVersion = "2.33-beta"
     const val hiltCompilerVersion = "1.0.0-alpha03"
     const val roomVersion = "2.3.0-beta02"
-    const val dataStoreVersion = "1.0.0-alpha07"
+    const val dataStoreVersion = "1.0.0-alpha08"
     const val pagingVersion = "3.0.0-beta01"
     const val glideVersion = "4.12.0"
     const val materialDialogVersion = "3.3.0"
@@ -33,13 +33,17 @@ object Dependencies {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
 
-    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
+    const val lifecycleRuntime =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycleVersion}"
 
+    const val navigationUi = "androidx.navigation:navigation-ui:${Versions.navigationVersion}"
     const val navigationUiKtx =
         "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment:${Versions.navigationVersion}"
     const val navigationFragmentKtx =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
 

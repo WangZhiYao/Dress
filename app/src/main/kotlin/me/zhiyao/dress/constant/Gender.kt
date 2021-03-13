@@ -1,25 +1,24 @@
 package me.zhiyao.dress.constant
 
+import androidx.annotation.IntDef
+
 /**
  *
  * @author WangZhiYao
  * @date 2021/1/17
  */
-enum class Gender(val id: Int) {
-
-    FEMALE(0),
-
-    MALE(1);
+@IntDef(
+    Gender.MALE,
+    Gender.FEMALE
+)
+@MustBeDocumented
+@Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD)
+@Retention(AnnotationRetention.SOURCE)
+annotation class Gender {
 
     companion object {
-        fun getById(id: Int): Gender? {
-            for (value in values()) {
-                if (value.id == id) {
-                    return value
-                }
-            }
+        const val MALE = 1
 
-            return null
-        }
+        const val FEMALE = 2
     }
 }
