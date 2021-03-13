@@ -90,6 +90,8 @@ dependencies {
 
     implementation(Dependencies.pagingRuntimeKtx)
 
+    implementation(project(Dependencies.matisse))
+
     implementation(Dependencies.glide)
     kapt(Dependencies.glideCompiler)
 

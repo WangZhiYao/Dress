@@ -65,6 +65,8 @@ object Dependencies {
 
     const val pagingRuntimeKtx = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
 
+    const val matisse = ":matisse"
+
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 
