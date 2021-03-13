@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_dress"
-        android:name="me.zhiyao.wedding.ui.main.dress.DressFragment"
+        android:name="me.zhiyao.dress.ui.main.dress.DressFragment"
         android:label="@string/nav_menu_dress"
         tools:layout="@layout/fragment_dress" />
 
     <fragment
         android:id="@+id/nav_customer"
-        android:name="me.zhiyao.wedding.ui.main.customer.CustomerFragment"
+        android:name="me.zhiyao.dress.ui.main.customer.CustomerFragment"
         android:label="@string/nav_menu_customer"
         tools:layout="@layout/fragment_customer" />
 
     <fragment
         android:id="@+id/nav_reserve"
-        android:name="me.zhiyao.wedding.ui.main.reserve.ReserveFragment"
+        android:name="me.zhiyao.dress.ui.main.reserve.ReserveFragment"
         android:label="@string/nav_menu_reserve"
         tools:layout="@layout/fragment_reserve" />
 
     <activity
         android:id="@+id/nav_setting"
-        android:name="me.zhiyao.wedding.ui.setting.SettingActivity"
+        android:name="me.zhiyao.dress.ui.setting.SettingActivity"
         android:label="@string/nav_menu_setting"
         tools:layout="@layout/activity_setting" />
 

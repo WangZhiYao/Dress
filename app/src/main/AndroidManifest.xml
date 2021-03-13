@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.zhiyao.wedding">
+    package="me.zhiyao.dress">
 
     <application
-        android:name=".WeddingApplication"
+        android:name=".DressApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"

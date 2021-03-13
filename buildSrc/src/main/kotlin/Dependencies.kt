@@ -1,19 +1,19 @@
 object Versions {
-    const val kotlinVersion = "1.4.21"
-    const val leakCanaryVersion = "2.5"
+    const val kotlinVersion = "1.4.31"
+    const val leakCanaryVersion = "2.6"
     const val androidxCoreVersion = "1.3.2"
     const val androidxAppCompatVersion = "1.2.0"
     const val androidxSupportV4Version = "1.0.0"
-    const val materialVersion = "1.2.1"
+    const val materialVersion = "1.3.0"
     const val constraintLayoutVersion = "2.0.4"
-    const val lifecycleVersion = "2.2.0"
-    const val navigationVersion = "2.3.2"
-    const val hiltAndroidVersion = "2.28-alpha"
-    const val hiltCompilerVersion = "1.0.0-alpha02"
-    const val roomVersion = "2.3.0-alpha04"
-    const val dataStoreVersion = "1.0.0-alpha06"
-    const val pagingVersion = "3.0.0-alpha12"
-    const val glideVersion = "4.11.0"
+    const val lifecycleVersion = "2.3.0"
+    const val navigationVersion = "2.3.3"
+    const val hiltAndroidVersion = "2.33-beta"
+    const val hiltCompilerVersion = "1.0.0-alpha03"
+    const val roomVersion = "2.3.0-beta02"
+    const val dataStoreVersion = "1.0.0-alpha07"
+    const val pagingVersion = "3.0.0-beta01"
+    const val glideVersion = "4.12.0"
     const val materialDialogVersion = "3.3.0"
 }
 
@@ -38,11 +38,8 @@ object Dependencies {
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycleVersion}"
 
-    const val navigationUi = "androidx.navigation:navigation-ui:${Versions.navigationVersion}"
     const val navigationUiKtx =
         "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
-    const val navigationFragment =
-        "androidx.navigation:navigation-fragment:${Versions.navigationVersion}"
     const val navigationFragmentKtx =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
 
